@@ -1,0 +1,643 @@
+
+.SMSLoginBox {
+    display: block;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+#loginOTPForm {
+    border: 2px solid #eee;
+    padding: 20px;
+}
+
+.input-error-validation {
+    font-size: 9pt;
+    color: red;
+}
+
+#checkOTPForm {
+    border: 2px solid #eee;
+    padding: 20px;
+}
+
+#resendOTPTime {
+    border: 2px solid #eee;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.DefaultLogin {
+    display: none;
+}
+.cart-summary-wrap{
+    border-radius: 15px;
+}
+.cart-summary{
+    border-radius: 15px;
+}
+.text-left{
+    text-align: left !important;
+}
+.km-cart-progress {
+    position: relative;
+    width: 30%;
+    min-width: 550px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.km-cart-progress .vp-progress-bar {
+    width: 100%;
+    height: 2px;
+    border-bottom: 2px dashed #CBCBCB;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.km-cart-progress .vp-container-step {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media screen and (max-width: 700px){
+    .km-cart-progress .vp-container-step {
+        justify-content: center;
+    }
+    .vp-progress-bar {
+        display: none;
+    }
+
+    .km-step {
+        font-size: 8pt !important;
+    }
+    .km-title-style-theme{
+        text-align: center !important;
+    }
+    .km-title{
+        font-size: 17px !important;
+        padding:0 !important
+    }
+}
+
+.km-cart-progress .km-step {
+    float: right;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+    padding: 12px;
+}
+
+.justDesktop {
+    display: block !important;
+}
+
+.km-box-style2 {
+    background: #fff;
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.km-address-style.km-active, .km-address-style.activeDemo, .km-address-style:hover {
+    border: 1px solid #7ee3ee;
+    box-shadow: 0 0 0 3px rgba(22, 143, 223, 0.16);
+    transition: all 0.3s ease-in-out;
+}
+
+.km-address-style {
+    background: #fff;
+    flex: 1;
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid #e5e5e5;
+    padding: 32px 24px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.km-address-style-add {
+    border: 1px dashed #E5E5E5;
+    border-radius: 16px;
+    background: #f9f9f9;
+    letter-spacing: -0.3px;
+    color: #2f2f2f;
+    min-height: 266px;
+    font-size: 18px;
+    cursor: pointer;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.km-address-style.km-active .km-active-btn, .km-address-style.activeDemo .km-active-btn, .km-address-style:hover .km-active-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.km-address-style .defaultActive {
+    background: #F5FFFC;
+    color: #00BA88;
+    padding: 8px 24px;
+    text-align: center;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.km-address-style .km-active-btn {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    transform: scale(0);
+    opacity: 0;
+    color: #28af2b;
+    border: unset;
+    white-space: nowrap;
+}
+
+.km-btn.km-theme-3 {
+    color: #5e5e5e;
+    border-radius: 16px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.km-btn {
+    cursor: pointer;
+    border: 0 none;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.km-address-style .km-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.km-address-style .firstTitle {
+    font-size: 16px;
+    display: flex;
+}
+
+.km-address-style .vp-container-action {
+    display: flex;
+    align-items: center;
+}
+
+.km-address-style .vp-container-action {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+}
+
+.km-address-style .vp-container-action .vp-address-style {
+    display: flex;
+    align-items: center;
+}
+
+.km-address-style .km-delete-address {
+    color: #fb3449;
+}
+
+.address-box {
+    display: flex;
+    align-items: center;
+}
+
+.km-address-style .firstTitle .title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #cbcbcb;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.km-address-style .firstTitle .title2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5e5e5e;
+}
+
+.km-address-style .defaultActive {
+    background: #F5FFFC;
+    color: #00BA88;
+    padding: 8px 24px;
+    text-align: center;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.km-title-style-theme {
+    position: relative;
+    clear: both;
+}
+
+.km-title-style-theme .km-title {
+    display: inline-block;
+    background: #f2f2f2;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50px;
+    padding: 5px 0 5px 30px;
+    z-index: 2;
+    position: relative;
+}
+
+.km-box-style2 {
+    background: #fff;
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.kmAddressListContainer {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 24px;
+}
+
+.km-title-style-new {
+    margin-bottom: 24px;
+}
+
+.km-title-style-new .km-title {
+    font-size: 14px;
+    color: #2f2f2f;
+    font-weight: 700;
+}
+.flex-x-spaceBetween {
+    justify-content: space-between;
+}
+.km-delivery-type-style.km-active, .km-delivery-type-style:hover {
+    border: 1px solid #7ee3ee;
+    box-shadow: 0 0 0 3px rgba(22, 143, 223, 0.16);
+    transition: all 0.3s ease-in-out;
+}
+.km-delivery-type-style {
+    align-items: center;
+    border: 1px solid #E6E6E6;
+    position: relative;
+    flex: 1 0 46%;
+    border-radius: 16px;
+    padding: 16px 20px;
+    cursor: pointer;
+    margin: 8px;
+    transition: all 0.3s ease-in-out;
+}
+.flex-y-center {
+    align-items: center;
+}
+.km-delivery-type-style .km-img {
+    max-width: 60px;
+    min-width: 60px;
+    margin-left: 12px;
+}
+.km-delivery-type-style .km-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #2F2F2F;
+}
+.km-description {
+    color: #2f2f2f;
+    font-size: 12px;
+    font-weight: 500;
+}
+.km-delivery-type-style .price {
+    white-space: nowrap;
+    margin-right: 12px;
+}
+.km-delivery-type-style .price .title {
+    font-size: 12px;
+    color: #979797;
+    font-weight: 700;
+}
+.km-delivery-type-style .price .priceIn {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+}
+.none {
+    display: none;
+}
+.km-cart-content .km-delivery-time-container {
+    margin-top: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.km-title-style-theme::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: #F2F2F2;
+    z-index: 1;
+}
+.km-delivery-time-container {
+    margin-top: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.km-box-style2 .km-title-style-theme .km-title {
+    background: #fff;
+}
+.km-delivery-time {
+    padding: 0;
+    overflow: hidden;
+}
+.km-box-style2 {
+    background: #fff;
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    padding: 20px;
+}
+.km-delivery-time .km-delivery-time-tab {
+    position: relative;
+    font-size: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: auto;
+}
+.km-delivery-time .km-delivery-time-tab .km-item.km-active {
+    color: #FF6900;
+    border-bottom-color: #fff;
+    border-bottom: 2px solid #FF6900;
+}
+.km-delivery-time .km-delivery-time-tab .km-item {
+    font-size: 13px;
+    letter-spacing: -0.3px;
+    color: grey;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 130px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
+}
+.km-delivery-time .km-delivery-time-tab .km-item .km-day-name {
+    font-weight: 900;
+    font-size: 16px;
+}
+.km-delivery-time .km-delivery-time-tab .km-item .km-day-name {
+    margin-left: 7px;
+    white-space: nowrap;
+}
+.km-delivery-time .km-delivery-time-tab .km-item .km-day-date {
+    font-weight: 300;
+}
+.km-delivery-time .km-delivery-time-contents {
+    padding: 16px 8px;
+    background: #f9f9f9;
+}
+.km-delivery-time .km-delivery-time-contents .km-cart-detail-select > .km-detail {
+    float: right;
+    padding: 10px 0;
+    position: relative;
+    font-size: 14px;
+    color: #2F2F2F;
+}
+.pretty {
+    position: relative;
+    display: inline-block;
+    margin-left: 1em;
+    white-space: nowrap;
+    line-height: 1;
+}
+.pretty input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    min-width: 1em;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.pretty * {
+    box-sizing: border-box;
+}
+.pretty.p-round .state label::after, .pretty.p-round .state label::before {
+    border-radius: 100%;
+}
+.pretty .state label::before {
+    border-color: #7C7C7C;
+}
+.pretty.p-bigger .icon, .pretty.p-bigger .img, .pretty.p-bigger .svg, .pretty.p-bigger label::after, .pretty.p-bigger label::before {
+    font-size: 1.2em !important;
+    top: calc((0% - (100% - 0.9em)) - 35%) !important;
+}
+.pretty .state label::after, .pretty .state label::before {
+    content: '';
+    width: calc(1em + 2px);
+    height: calc(1em + 2px);
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: calc((0% - (100% - 1em)) - 8%);
+    background-color: transparent;
+}
+
+.pretty.p-round .state label::after, .pretty.p-round .state label::before {
+    border-radius: 100%;
+}
+.pretty .state label::before {
+    border-color: #7C7C7C;
+}
+.pretty.p-bigger .icon, .pretty.p-bigger .img, .pretty.p-bigger .svg, .pretty.p-bigger label::after, .pretty.p-bigger label::before {
+    font-size: 1.2em !important;
+    top: calc((0% - (100% - 0.9em)) - 35%) !important;
+}
+.pretty.p-smooth .icon, .pretty.p-smooth .svg, .pretty.p-smooth label::after, .pretty.p-smooth label::before {
+    transition: all .5s ease;
+}
+.pretty .state label::before {
+    border-color: #bdc3c7;
+}
+.pretty .state label::after, .pretty .state label::before {
+    content: '';
+    width: calc(1em + 2px);
+    height: calc(1em + 2px);
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: calc((0% - (100% - 1em)) - 8%);
+    background-color: transparent;
+}
+.pretty.p-bigger label {
+    text-indent: 1.7em;
+}
+.pretty .state label {
+    font-weight: 400;
+    text-indent: 1.5em;
+}
+.pretty.p-round .state label::after, .pretty.p-round .state label::before {
+    border-radius: 100%;
+}
+.pretty.p-bigger .icon, .pretty.p-bigger .img, .pretty.p-bigger .svg, .pretty.p-bigger label::after, .pretty.p-bigger label::before {
+    font-size: 1.2em !important;
+    top: calc((0% - (100% - 0.9em)) - 35%) !important;
+}
+.pretty.p-smooth .icon, .pretty.p-smooth .svg, .pretty.p-smooth label::after, .pretty.p-smooth label::before {
+    transition: all .5s ease;
+}
+.pretty .state label::after, .pretty .state label::before {
+    content: '';
+    width: calc(1em + 2px);
+    height: calc(1em + 2px);
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid transparent;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: calc((0% - (100% - 1em)) - 8%);
+    background-color: transparent;
+}
+.pretty.p-bigger label {
+    text-indent: 1.7em;
+}
+.km-delivery-time .km-delivery-time-contents .km-cart-detail-select > .km-detail {
+    float: right;
+    padding: 10px 0;
+    position: relative;
+    font-size: 14px;
+    color: #2F2F2F;
+}
+.pretty.p-round .state label::after, .pretty.p-round .state label::before {
+    border-radius: 100%;
+}
+.pretty .state label::before {
+    border-color: #7C7C7C;
+}
+.pretty.p-bigger .icon, .pretty.p-bigger .img, .pretty.p-bigger .svg, .pretty.p-bigger label::after, .pretty.p-bigger label::before {
+    font-size: 1.2em !important;
+    top: calc((0% - (100% - 0.9em)) - 35%) !important;
+}
+.pretty.p-smooth .icon, .pretty.p-smooth .svg, .pretty.p-smooth label::after, .pretty.p-smooth label::before {
+    transition: all .5s ease;
+}
+pretty .state label::after, .pretty .state label::before {
+    content: '';
+    width: calc(1em + 2px);
+    height: calc(1em + 2px);
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: calc((0% - (100% - 1em)) - 8%);
+    background-color: transparent;
+}
+.pretty.p-bigger label {
+    text-indent: 1.7em;
+}
+.pretty .state label {
+    font-weight: 400;
+    text-indent: 1.5em;
+}
+.pretty {
+    white-space: nowrap;
+    line-height: 1;
+}
+.km-delivery-time .km-delivery-time-contents .km-cart-detail-select > .km-detail {
+    font-size: 14px;
+    color: #2F2F2F;
+}
+.km-cart-content .km-cart-detail-select .km-detail {
+    font-size: 15px;
+}
+.km-cart-detail-select .km-active{
+    color: #ff6900 !important;
+}
+@media screen and (max-width: 500px){
+    .km-box-style2{
+        text-align: center !important;
+    }
+    .km-img{
+        margin: 0 auto !important;
+    }
+    .km-cart-progress{
+        min-width: 250px !important;
+    }
+}
+

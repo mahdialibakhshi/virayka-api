@@ -1,0 +1,167 @@
+
+header.header {
+    width: 100%;
+    z-index: 999;
+}
+
+
+/*---------------------------------------
+    10. My Account CSS
+-----------------------------------------*/
+
+.myaccount-tab-menu a {
+    border: 1px solid #eeeeee;
+    border-bottom: none;
+    color: #666666;
+    font-weight: 500;
+    font-size: 12px;
+    display: block;
+    padding: 15px 15px 13px;
+    text-transform: uppercase;
+}
+
+.myaccount-tab-menu a:last-child {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.myaccount-tab-menu a:hover, .myaccount-tab-menu a.active {
+    background-color: #5c8097;
+    color: #ffffff;
+}
+
+.myaccount-tab-menu a i {
+    font-size: 14px;
+    text-align: center;
+    width: 25px;
+}
+
+/*-- My Account Content -*/
+.myaccount-content {
+    background-color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 10px 40px rgba(110,134,216,.1);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+@media only screen and (max-width: 575px) {
+    .myaccount-content {
+        padding: 20px 15px;
+        /*overflow-x: scroll;*/
+    }
+    #mobile_menu_nav_ul{
+        display: none ;
+    }
+}
+#mobile_menu_nav{
+    background: #5c8097;
+}
+.table-responsive{
+    width: 100% !important;
+    overflow-x: scroll !important
+}
+
+.myaccount-content h3 {
+    /*border-bottom: 1px dashed #eeeeee;*/
+    margin-bottom: 25px;
+    font-size:21px !important;
+    border-radius:8px;
+    text-align: center;
+    background-color: #46a9ae !important;
+    color: white;
+    padding: 18px;
+}
+.ht-btn{
+    background-color: #5c8097 !important;
+    color: white !important;
+    font-size: 12px !important;
+    font-family: iransans, serif !important;
+}
+.myaccount-content .welcome a {
+    color: #000000;
+
+}
+
+.myaccount-content .welcome a:hover {
+    color: #5c8097;
+}
+
+.myaccount-content .welcome strong {
+    font-weight: 600;
+}
+
+.myaccount-content a.edit-address-btn {
+    border-color: #333333;
+}
+
+.myaccount-content a.edit-address-btn i {
+    padding-left: 5px;
+}
+
+.myaccount-content a.edit-address-btn:hover {
+    background-color: #5c8097;
+    border-color: #5c8097;
+}
+
+.myaccount-content button.save-change-btn {
+    background: none;
+    border: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #333333;
+    border-color: #333333;
+    width: 140px;
+    padding: 10px 0;
+    border-radius: 3px;
+}
+
+.myaccount-content button.save-change-btn:hover {
+    background-color: #5c8097;
+}
+
+/*-- My Account Table -*/
+.myaccount-table {
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.myaccount-table table th,
+.myaccount-table .table th {
+    padding: 10px;
+    font-weight: 600;
+}
+
+.myaccount-table table td,
+.myaccount-table .table td {
+    padding: 20px 10px;
+    vertical-align: middle;
+}
+
+.myaccount-table table td a:hover,
+.myaccount-table .table td a:hover {
+    color: #ffffff;
+}
+
+.saved-message {
+    border-top: 3px solid #5c8097;
+    border-radius: 5px 5px 0 0;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 20px;
+}
+
+/*-- My Account Details Form -*/
+.account-details-form h4 {
+    margin: 0;
+}
+
+.account-details-form input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ebebeb;
+    border-radius: 0;
+    line-height: 24px;
+    padding: 11px 25px;
+    color: #656565;
+}

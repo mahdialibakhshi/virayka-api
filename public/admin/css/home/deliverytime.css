@@ -1,0 +1,73 @@
+.checkbox{
+    min-height: 18px;
+    margin-right: 20px;
+    width: 50px;
+    float: right;
+    height: 100%;
+    width: auto;
+}
+.checkmark{
+    cursor: pointer;
+    border: 1px solid #0000000f ;
+}
+.key{
+    width: 40%;
+    font-weight: 900;
+    line-height: 18px;
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+.admintable{
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+    border-radius: 9px;
+    padding: 26px;
+    display: block;
+    margin: auto;
+    width: 100%;
+    background: #fefeff;
+}
+
+table{
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    direction: rtl;
+    float: right;
+}
+.admintable tr{
+    border: solid #0000000f 1px;
+    border-radius: 3px;
+    margin-top: 9px;
+    display: block;
+    padding: 30px 0;
+}
+h2{
+    margin: 12px 0;
+}
+.checkbox-container{
+    display: inline;
+}
+[type="checkbox"]:checked ~ .checkmark{
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px #147b7b45;
+    background: #2fbd1a91;
+    color: black
+}
+.radio input[type="radio"], .checkbox input[type="checkbox"]{
+    float: left;
+    margin-left: -20px;
+    display: none;
+}
+
+.info{
+    margin-top: 60px;
+    text-align: right;
+    padding:0 10px ;
+}
+li{
+    list-style: none;
+}
