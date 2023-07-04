@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Province;
 
 class ApiController extends Controller
 {
@@ -21,5 +22,26 @@ class ApiController extends Controller
             'message' => $message,
 
         ],$code);
+    }
+
+    public function province()
+    {
+
+        $province_new = [];
+        $provinces = Province::select('id','name')->get();
+
+        foreach ($provinces as $province){
+            $p=[
+                'ProvinceID'=>$province->id,
+                'ProvinceName'=>$province->name
+            ];
+            $province_new[]=$p;
+        }
+
+
+
+        return $this->successResponse(200,
+            $province_new
+        );
     }
 }

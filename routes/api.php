@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/token/GetServiceToken',[\App\Http\Controllers\Api\AuthController::class,'register']);
+
+Route::middleware('auth:api')->get('/Speed/GetProvince',[\App\Http\Controllers\Api\ApiController::class,'province']);
