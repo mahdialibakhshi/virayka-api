@@ -275,6 +275,29 @@ font-size: 17px;
         .variationSelected{
             box-shadow: 0px 3px 4px -2px;
         }
+        .product-qty-form > i{
+            background-color: var(--yellow);
+            width: 19px;
+            padding: 4px;
+            font-size: 10px;
+            height: 19px;
+            color: #fff;
+        }
+        #addToCartBtn{
+            text-align: center;  background-color: var(--yellow);
+            color: red;
+            padding: 7px 20px;
+            font-weight: bold;}
+
+        #quantity{
+            width: 36px;
+            background: #F6F6F7;
+            outline: none;
+            border: none;
+            height: 30px;
+            font-weight: 900;
+            color: #8f8c8c !important;
+        }
     </style>
 @endsection
 
@@ -292,7 +315,22 @@ font-size: 17px;
                 $("input[name='product_attr_variation_categories']").trigger('click');
             }
         })
+        function change_quantity(type){
+            let quantity = $('#quantity').val();
+            if (type==1) {
+                quantity = parseInt(quantity) + 1;
+            }else {
+                quantity = parseInt(quantity) -1;
+            }
+            if (quantity==0){
+                quantity=1;
+                $('#quantity').val(quantity);
+            }else {
+                $('#quantity').val(quantity);
+            }
 
+
+        }
         function getProductColors(attr_value, product_id, tag) {
             $('.colors').removeClass('ActiveBorder');
             $('.product_color').removeClass('ActiveBorder');
@@ -604,7 +642,7 @@ font-size: 17px;
                 <div class="col-12">
                     <article class="product">
                         <div class="row product_main_details">
-                            <div class="col-lg-5 col-md-6 col-sm-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="product-gallery default">
@@ -618,7 +656,7 @@ font-size: 17px;
                                                                 <a href="{{ imageExist(env('PRODUCT_IMAGES_UPLOAD_PATH'),$image) }}"
                                                                    rel="prettyPhoto[gallery1]">
                                                                     <img
-                                                                        src="{{ imageExist(env('PRODUCT_IMAGES_THUMBNAIL_UPLOAD_PATH'),$image) }}"
+                                                                        src="{{ imageExist(env('PRODUCT_IMAGES_UPLOAD_PATH'),$image) }}"
                                                                         class="img-thumb" alt="نمایشگر همیشه روشن"/>
                                                                 </a>
                                                             </div>
@@ -689,7 +727,7 @@ font-size: 17px;
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-lg-7 col-md-6 col-sm-12 ">
+                            <div class="col-lg-6 col-md-6 col-sm-12 ">
 
                                 <div style="margin-bottom: 50px" class="row mb-5 mt-2">
                                     <div class="col-4"></div>
@@ -710,6 +748,9 @@ font-size: 17px;
 
                                     </div>
                                 </div>
+                                <div>
+                                    {!! $product->shortDescription !!}
+                                </div>
                                 <h2 class="product-title ">
                                     {{ $product->name }}
                                 </h2>
@@ -725,9 +766,49 @@ font-size: 17px;
                                         </ul>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 product_main_pr">
-                                        <div class="product-short-desc lh-2">
-                                            {!! $product->shortDescription !!}
-                                        </div>
+                                        @if(count($product_attr_variations_categories)>0)
+                                            <div id="product_attr_variations_categories"
+                                                 class="{{ $product_attr_variations_categories[0]->AttributeValue->id==217 ? 'd-none' : 'd-flex' }} flex-wrap"
+                                                 style="margin: 10px 0 !important;">
+                                                @foreach($product_attr_variations_categories as $item)
+                                                    <label
+                                                        for="product_attr_variation_categories_{{ $item->AttributeValue->id }}">
+                                    <span class="product_color colors">
+                                     <input onclick="getProductColors({{ $item->attr_value }},{{ $product->id }},this)"
+                                            type="radio" name="product_attr_variation_categories"
+                                            id="product_attr_variation_categories_{{ $item->attr_value }}"
+                                            value="{{ $item->attr_value }}">
+
+                                        {{ $item->AttributeValue->name }}
+                                    </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        @endif
+
+                                        {{--                            //colors--}}
+                                        @if(count($product_colors)>0)
+                                            <div id="getAllProductColors"
+                                                 class="flex-wrap {{ $product_colors[0]->Color->id==346 ? 'd-none' : 'd-flex' }}"
+                                                 style="margin: 10px 0 !important;">
+                                                @foreach($product_colors as $key => $product_color)
+                                                    <label for="product_color_{{ $product_color->Color->id }}">
+                                    <span class="product_color variations">
+                                        <img class="img-variations"
+                                             src="{{ imageExist(env('ATTR_UPLOAD_PATH'),$product_color->Color->image) }}">
+                                     <input
+                                         onclick="getAttributeVariation({{ $product_color->Color->id }},{{ $product->id }},this)"
+                                         type="radio" name="product_color"
+                                         id="product_color_{{ $product_color->Color->id }}"
+                                         value="{{ $product_color->Color->id }}"
+                                     >
+                                         <input value="{{ $product_color->Color->name }}" type="hidden" id="color_name_{{$key}}">
+
+                                    </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        @endif
 
                                     <div class="row">
                                         @if(count($product_options)>0)
@@ -790,54 +871,13 @@ font-size: 17px;
                                                 </button>
                                             </div>
                                         @endif
-                                        @if(count($product_attr_variations_categories)>0)
-                                            <div id="product_attr_variations_categories"
-                                                 class="{{ $product_attr_variations_categories[0]->AttributeValue->id==217 ? 'd-none' : 'd-flex' }} flex-wrap"
-                                                 style="margin: 10px 0 !important;">
-                                                @foreach($product_attr_variations_categories as $item)
-                                                    <label
-                                                        for="product_attr_variation_categories_{{ $item->AttributeValue->id }}">
-                                    <span class="product_color colors">
-                                     <input onclick="getProductColors({{ $item->attr_value }},{{ $product->id }},this)"
-                                            type="radio" name="product_attr_variation_categories"
-                                            id="product_attr_variation_categories_{{ $item->attr_value }}"
-                                            value="{{ $item->attr_value }}">
 
-                                        {{ $item->AttributeValue->name }}
-                                    </span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        @endif
-
-                                        {{--                            //colors--}}
-                                        @if(count($product_colors)>0)
-                                            <div id="getAllProductColors"
-                                                 class="flex-wrap {{ $product_colors[0]->Color->id==346 ? 'd-none' : 'd-flex' }}"
-                                                 style="margin: 10px 0 !important;">
-                                                @foreach($product_colors as $product_color)
-                                                    <label for="product_color_{{ $product_color->Color->id }}">
-                                    <span class="product_color variations">
-                                        <img class="img-variations"
-                                             src="{{ imageExist(env('ATTR_UPLOAD_PATH'),$product_color->Color->image) }}">
-                                     <input
-                                         onclick="getAttributeVariation({{ $product_color->Color->id }},{{ $product->id }},this)"
-                                         type="radio" name="product_color"
-                                         id="product_color_{{ $product_color->Color->id }}"
-                                         value="{{ $product_color->Color->id }}"
-                                     >
-                                    {{ $product_color->Color->name }}
-                                    </span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        @endif
 
                                     </div>
                                     @if($setting->product_message!=null)
                                         <div class="col-12">
                                             <p class="txt_note">
-                                                <i class="fa fa-info" aria-hidden="true"></i>
+
                                                 {{ $setting->product_message }}
                                             </p>
                                         </div>

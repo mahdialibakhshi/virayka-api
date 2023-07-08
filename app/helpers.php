@@ -273,6 +273,7 @@ function product_price_for_user_normal($product_id, $product_attr_variation_id =
         $percent_sale_price = $product_attr_variation->percent_sale_price;
         $sale_price = calculateDiscount($price, $percent_sale_price);
         $sale_price=intval($sale_price);
+
         $sale_price=round($sale_price,-1);
         $sale_price=round($sale_price,-3);
         return [$price, $percent_sale_price, $sale_price];
@@ -284,9 +285,11 @@ function product_price_for_user_normal($product_id, $product_attr_variation_id =
         $price = $product->price;
         $percent_sale = $product->percent_sale_price;
         $sale_price = calculateDiscount($price, $percent_sale);
+
         $sale_price=intval($sale_price);
         $sale_price=round($sale_price,-1);
         $sale_price=round($sale_price,-3);
+
         return [$price, $percent_sale, $sale_price];
     } else {
         //محاسبه قیمت برای کاربران عادی

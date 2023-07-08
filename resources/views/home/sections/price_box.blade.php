@@ -81,42 +81,61 @@
             </div>
         </div>
     @endif
-</div>
-<div id="quantityBox">
-        <span>تعداد موجود در انبار :<span id="span_quantity">
-                @if(isset($product_variation))
-                    {{ $product_variation->quantity }}
-                @else
-                    {{ $product->quantity }}
-                @endif
-            </span> عدد </span>
-</div>
-<div class="fix-bottom product-sticky-content sticky-content">
-    <label>تعداد:</label>
-    <div class="product-form d-flex justify-content-between align-center">
-        <div class="product-qty-form with-label">
-            <div>
-                <input id="quantity" class="quantity form-control" type="number"
-                       min="1"
-                       max="10000000" value="1">
-            </div>
-        </div>
-        @if($product->quantity==0)
-            <button onclick="informMe({{ $product->id }})"
-                    title="موجود شد به من اطلاع بده"
-                    type="button" class="btn btn-primary btn-cart">
-                <i class="fas fa-bell"></i>
-                <span>موجود شد به من اطلاع بده</span>
-            </button>
-        @else
-            <div class="d-flex">
 
-                                                        <span id="addToCartBtn" class="search_prod_btn">
-                                                            <i class="fa fa fa-cart-arrow-down search_icon_cart"
-                                                               aria-hidden="true"></i>
-                                                        </span>
-            </div>
-        @endif
-    </div>
+
 </div>
+
+{{--<div id="quantityBox">--}}
+{{--        <span>تعداد موجود در انبار :<span id="span_quantity">--}}
+{{--                @if(isset($product_variation))--}}
+{{--                    {{ $product_variation->quantity }}--}}
+{{--                @else--}}
+{{--                    {{ $product->quantity }}--}}
+{{--                @endif--}}
+{{--            </span> عدد </span>--}}
+{{--</div>--}}
+{{--<div class="fix-bottom product-sticky-content sticky-content">--}}
+{{--    <label>تعداد:</label>--}}
+{{--    <div class="product-form d-flex justify-content-between align-center">--}}
+{{--        <div class="product-qty-form with-label">--}}
+{{--            <div>--}}
+{{--                <input id="quantity" class="quantity form-control" type="number"--}}
+{{--                       min="1"--}}
+{{--                       max="10000000" value="1">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        @if($product->quantity==0)--}}
+{{--            <button onclick="informMe({{ $product->id }})"--}}
+{{--                    title="موجود شد به من اطلاع بده"--}}
+{{--                    type="button" class="btn btn-primary btn-cart">--}}
+{{--                <i class="fas fa-bell"></i>--}}
+{{--                <span>موجود شد به من اطلاع بده</span>--}}
+{{--            </button>--}}
+{{--        @else--}}
+{{--            <div class="d-flex">--}}
+
+{{--                                                        <span id="addToCartBtn" class="search_prod_btn">--}}
+{{--                                                            <i class="fa fa fa-cart-arrow-down search_icon_cart"--}}
+{{--                                                               aria-hidden="true"></i>--}}
+{{--                                                        </span>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+{{--    </div>--}}
+{{--</div>--}}
+
+<div style="max-width:200px !important; text-align: center" class="product-qty-form with-label">
+    <label class="font-weight-bold">تعداد:</label>
+    <i style="margin-right: 15px;margin-left:10px;cursor: pointer" onclick="change_quantity(1)" class="fa fa-plus"></i>
+
+    <input   style="width: 36px" readonly class="text-center quantity-input number-input"
+             id="quantity"
+             min="1" max="100000"
+             value="1">
+    <i style="margin-right: 10px;cursor: pointer" onclick="change_quantity(0)" class="fa fa-minus"></i>
+</div>
+<div class="mt-3" id="addToCartBtn" style="width: 100%">
+    <span  >افزودن به سبد </span>
+</div>
+
+
 
