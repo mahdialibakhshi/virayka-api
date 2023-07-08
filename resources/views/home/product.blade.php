@@ -14,11 +14,22 @@
 
 @section('style')
     <style>
-        .search_prod_icon .search_icon_like{
+        .search_prod_icon .search_icon_like {
             cursor: pointer;
             width: 33px;
             height: 33px;
         }
+
+        .product-title {
+            font-weight: 900;
+            font-size: 15px !important;
+            padding-right: 17px;
+            color: #000 !important;
+            border-top: 4px solid #efefef;
+            border-bottom: 4px solid #efefef;
+            margin-bottom: 20px;
+        }
+
         input[type='radio'] {
             display: none;
         }
@@ -103,6 +114,10 @@
             margin-bottom: 10px !important;
         }
 
+        .brand-image{
+            border: 1px solid #cccccc;
+        }
+
         .product_technical__qvJms > ul {
             width: 100%;
         }
@@ -145,6 +160,15 @@
             margin: 0 !important;
         }
 
+        .property-org {
+
+            text-align: right;
+            color: #7f7d7d;
+            padding-right: 18px;
+            padding-top: 20px;
+            margin-bottom: 7px;
+        }
+
         .arrow_icon {
             width: 20px;
             height: auto;
@@ -169,22 +193,87 @@
             padding: 8px;
         }
 
+        .list-group-item {
+            border-bottom: 1px solid #e2e2e2 !important;
+            border-top: 1px solid #e2e2e2 !important;
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            padding: 10px 20px !important;
+
+        }
+
         .new-price {
             margin: 0 !important;
         }
-        .search_icon_like{
+        .w-icon-heart {
+            font-size: 25px;
+        }
+
+        .w-icon-compare {
+            font-size: 25px;
+        }
+
+        .search_icon_like {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .search_prod_icon .search_icon_like::before {
             top: 0;
             position: relative;
             right: 0;
         }
-        .search_prod_icon,.search_prod_btn{
+
+        .search_prod_icon, .search_prod_btn {
             position: relative;
             margin-right: 20px;
+        }
+        .variationItem{
+            background-color: #f6f6f6;
+            /* padding: 1px 24px; */
+            width: 180px;
+            margin-right: 14px;
+            color: #8f8c8c;
+            padding-top: 5px;
+        }
+        .product_final_price_span{
+margin-left: 4px;
+        }
+        .previous_product_price_span{
+            margin-left: 4px;
+            font-weight: 800;
+        }
+        .regular-price{
+            background-color: #f6f6f6;
+            padding: 3px 40px;
+font-size: 17px;
+            font-weight: 800;
+        }
+        .discount{
+            height: 83px;
+            margin-left: 6px;
+            background-color: red;
+            font-weight: 800;
+        }
+        .del-box::after{
+            content: ' ';
+            display: block;
+            height: 3px;
+            width: 94px;
+            top: 13px;
+            left: 3px;
+            position: absolute;
+            background-color: red;
+        }
+        .del-box{
+            position: relative;
+        }
+        .price > span{
+            font-weight: 800;
+        }
+        .variationSelected{
+            box-shadow: 0px 3px 4px -2px;
         }
     </style>
 @endsection
@@ -602,43 +691,69 @@
                             </div>
                             <div class="col-lg-7 col-md-6 col-sm-12 ">
 
+                                <div style="margin-bottom: 50px" class="row mb-5 mt-2">
+                                    <div class="col-4"></div>
+                                    <div class="col-4 text-center">
+                                        @if($product->brand !=null)
+                                            <a href="#">
+                                                <img width="110"
+                                                     height="110" src="{{imageExist(env('BRAND_UPLOAD_PATH'),$product->brand->image)}}" class="img-fluid brand-image">
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div style="    padding-top: 31px;
+    padding-left: 44px;" class="col-4 text-left">
+                                        <i class="w-icon-compare mr-2"></i>
 
+                                                            @include('home.sections.wishlist')
+
+
+                                    </div>
+                                </div>
                                 <h2 class="product-title ">
                                     {{ $product->name }}
                                 </h2>
-                                <hr class="hr-text" data-content="ویژگی های اصلی">
+                                <p class="property-org mt-3">ویژگی های اصلی</p>
                                 <div class="row">
-                                    @foreach($product->product_attributes_original() as $product_attributes_original_items)
-                                        @include('home.sections.product_attributes')
-                                    @endforeach
+                                    <div class="col-12">
+                                        <ul class="list-group">
+                                            @foreach($product->product_attributes_original() as $product_attributes_original_items)
+
+                                                @include('home.sections.product_attributes')
+
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 product_main_pr">
                                         <div class="product-short-desc lh-2">
                                             {!! $product->shortDescription !!}
                                         </div>
 
+                                    <div class="row">
                                         @if(count($product_options)>0)
-                                            <div class="mb-5">
+                                            <div class="mb-5 col-xl-6">
                                                 @foreach($product_options_attributes as $product_options_attribute)
-                                                    <div class="control-label mb-3"
-                                                         style="border-top: 1px solid #ddd;margin-top: 20px;padding-top: 20px; font-size: 22px; font-weight: bold;">{{ \App\Models\Attribute::where('id',$product_options_attribute)->first()->name }}
-                                                        :
-                                                    </div>
-                                                    <ul class="mb-3 d-flex flex-wrap">
-                                                            <?php
-                                                            $i = 0;
-                                                            ?>
-                                                        @foreach($product_options as $key=>$product_option)
-                                                            @if($product_options_attribute==$product_option->attribute_id)
-                                                                    <?php
-                                                                    $i++;
-                                                                    $attribute = \App\Models\Attribute::where('id', $product_options_attribute)->first()->limit_select;
-                                                                    if ($attribute == 1) {
-                                                                        $class = 'option_variation_radio';
-                                                                    } else {
-                                                                        $class = 'option_variation_checkbox';
-                                                                    }
-                                                                    ?>
-                                                                <span class="variationItem {{ $class }}">
+                                                    <div class="d-flex">
+                                                        <div class="control-label mb-3"
+                                                             style="margin-top: 20px;padding-top: 20px; font-size: 15px; font-weight: bold;">{{ \App\Models\Attribute::where('id',$product_options_attribute)->first()->name }}
+                                                            :
+                                                        </div>
+                                                        <ul style="margin-top: 2.1rem" class="  ">
+                                                                <?php
+                                                                $i = 0;
+                                                                ?>
+                                                            @foreach($product_options as $key=>$product_option)
+                                                                @if($product_options_attribute==$product_option->attribute_id)
+                                                                        <?php
+                                                                        $i++;
+                                                                        $attribute = \App\Models\Attribute::where('id', $product_options_attribute)->first()->limit_select;
+                                                                        if ($attribute == 1) {
+                                                                            $class = 'option_variation_radio';
+                                                                        } else {
+                                                                            $class = 'option_variation_checkbox';
+                                                                        }
+                                                                        ?>
+                                                                    <span class="variationItem mb-2 {{ $class }}">
                                                                 <input
                                                                     onclick="extraPrice({{ $product_options_attribute }},this,{{ $attribute }})"
                                                                     data-id="extra_option"
@@ -656,15 +771,18 @@
                                                                     style="display: flex;align-items:center;justify-content: center;width: 100%;height: 100%;"
                                                                     for="attr_{{ $product_option->id }}">{{ $product_option->VariationValue->name }}</label>
                                                        </span>
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+
                                                 @endforeach
                                             </div>
                                         @endif
-                                        <div id="price_info">
+                                        <div id="price_info col-xl-6">
                                             @include('home.sections.price_box')
                                         </div>
+                                    </div>
                                         @if(count($product_attr_variations_categories)>1 and count($product_colors)>1)
                                             <div class="d-flex flex-wrap" style="margin: 10px 0 !important;">
                                                 <button class="btn btn-primary btn-filter-clear">
@@ -714,36 +832,6 @@
                                                 @endforeach
                                             </div>
                                         @endif
-                                        <div class="fix-bottom product-sticky-content sticky-content">
-                                            <label>تعداد:</label>
-                                            <div class="product-form d-flex justify-content-between align-center">
-                                                <div class="product-qty-form with-label">
-                                                    <div>
-                                                        <input id="quantity" class="quantity form-control" type="number"
-                                                               min="1"
-                                                               max="10000000" value="1">
-                                                    </div>
-                                                </div>
-                                                @if($product->quantity==0)
-                                                    <button onclick="informMe({{ $product->id }})"
-                                                            title="موجود شد به من اطلاع بده"
-                                                            type="button" class="btn btn-primary btn-cart">
-                                                        <i class="fas fa-bell"></i>
-                                                        <span>موجود شد به من اطلاع بده</span>
-                                                    </button>
-                                                @else
-                                                    <div class="d-flex">
-                                                        <span class="search_prod_icon">
-                                                            @include('home.sections.wishlist')
-                                                        </span>
-                                                        <span id="addToCartBtn" class="search_prod_btn">
-                                                            <i class="fa fa fa-cart-arrow-down search_icon_cart"
-                                                               aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
 
                                     </div>
                                     @if($setting->product_message!=null)

@@ -1,5 +1,5 @@
-<div class="col-6">
-    <ul class="list-group">
+
+
         @foreach($product_attributes_original_items as $product_attribute)
             @if($product_attribute->is_active==1)
                 <li class="list-group-item">
@@ -17,5 +17,5 @@
                     @endif</li>
             @endif
         @endforeach
-    </ul>
-</div>
+
+
