@@ -133,7 +133,7 @@
              value="1">
     <i style="margin-right: 10px;cursor: pointer" onclick="change_quantity(0)" class="fa fa-minus"></i>
 </div>
-<div class="mt-3" id="addToCartBtn" style="width: 100%">
+<div class="mt-3" id="addToCartBtn" style="width: 100%;cursor: pointer">
     <span  >افزودن به سبد </span>
 </div>
 

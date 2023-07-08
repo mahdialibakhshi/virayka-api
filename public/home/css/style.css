@@ -2018,16 +2018,16 @@ button:focus {
 .product_color {
     display: block;
     width: auto;
-    padding: 8px 12px;
-    border: 1px solid #cccccc;
+    padding: 8px 5px;
+
     border-radius: 10px;
     text-align: center;
-    margin: 5px;
+
 }
 
 .img-variations {
-    width: 15px !important;
-    height: 15px !important;
+    width: 30px !important;
+    height: 30px !important;
     border-radius: 50% !important;
     border: 1px solid black;
     margin: 1px;

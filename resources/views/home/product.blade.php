@@ -34,17 +34,26 @@
             display: none;
         }
 
-        .deActive {
-            background-color: #CCCCCC;
+        .product_color > img {
+           border: 3px solid #fff;
+            outline: 1px solid #7C7C7C;
         }
 
-        .ActiveBorder {
+        #product_attr_variations_categories > label> .ActiveBorder {
             background-color: #7DCACE;
             color: white;
+        }
+        label >.ActiveBorder > img{
+            border: 4px solid var(--yellow) !important;
+            outline: none !important;
         }
 
         .color_base {
             color: #7DCACE;
+        }
+        .img-variations{
+            width: 30px !important;
+            height: 30px !important;
         }
 
         .btn:hover, .btn:active, .btn:focus {
@@ -810,7 +819,7 @@ font-size: 17px;
                                             </div>
                                         @endif
 
-                                    <div class="row">
+                                    <div  class="row">
                                         @if(count($product_options)>0)
                                             <div class="mb-5 col-xl-6">
                                                 @foreach($product_options_attributes as $product_options_attribute)
@@ -860,7 +869,7 @@ font-size: 17px;
                                                 @endforeach
                                             </div>
                                         @endif
-                                        <div id="price_info col-xl-6">
+                                        <div style="{{count($product_options)>0 ? ' ' : 'margin-right:auto;margin-left:auto;'}}"  id="price_info col-xl-6">
                                             @include('home.sections.price_box')
                                         </div>
                                     </div>
