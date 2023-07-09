@@ -19,6 +19,9 @@
             width: 33px;
             height: 33px;
         }
+        .color_name{
+            color: #8f8c8c;
+        }
 
         .product-title {
             font-weight: 900;
@@ -35,8 +38,8 @@
         }
 
         .product_color > img {
-           border: 3px solid #fff;
-            outline: 1px solid #7C7C7C;
+            border: 3px solid #fff;
+            outline: 1px solid #ccc;
         }
 
         #product_attr_variations_categories > label> .ActiveBorder {
@@ -121,6 +124,9 @@
             color: #666;
             font-size: 16px;
             margin-bottom: 10px !important;
+        }
+        .single-product{
+            background-color: #f6f6f6 !important;
         }
 
         .brand-image{
@@ -247,7 +253,7 @@
             padding-top: 5px;
         }
         .product_final_price_span{
-margin-left: 4px;
+            margin-left: 4px;
         }
         .previous_product_price_span{
             margin-left: 4px;
@@ -256,7 +262,7 @@ margin-left: 4px;
         .regular-price{
             background-color: #f6f6f6;
             padding: 3px 40px;
-font-size: 17px;
+            font-size: 17px;
             font-weight: 800;
         }
         .discount{
@@ -313,6 +319,17 @@ font-size: 17px;
 @section('script')
     <script>
 
+        $(window).scroll(function(){
+            if($(window).scrollTop() > 100){
+
+                $('.product-gallery').css('position','sticky').css('top',60);
+
+
+            } else {
+
+                $('.product-gallery').css('position','static');
+            }
+        });
         $(document).ready(function () {
             $('.product_color').find('input').prop('checked', false);
             let product_colors = {{ count($product_colors) }};
@@ -390,6 +407,8 @@ font-size: 17px;
             $('.variations').removeClass('ActiveBorder');
             $('.colors').removeClass('deActive');
             $(tag).parents('span').addClass('ActiveBorder');
+            var name = $('#color_name_'+color_id).val();
+            $('.color_name').html(name);
             let attr_value = null;
             if ($("input[name='product_attr_variation_categories']").is(':checked')) {
                 attr_value = $("input[name='product_attr_variation_categories']:checked").val();
@@ -653,7 +672,8 @@ font-size: 17px;
                         <div class="row product_main_details">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div style="height: 1240px" class="col-12">
+
                                         <div class="product-gallery default">
                                             <img class="main_img_gallery"
                                                  src="{{ imageExist(env('PRODUCT_IMAGES_UPLOAD_PATH'),$product->primary_image) }}"/>
@@ -674,6 +694,7 @@ font-size: 17px;
                                                 </div>
                                             </section>
                                         </div>
+
                                         <!-- Modal Core -->
                                         <div class="modal-share modal fade" id="myModal" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel" aria-hidden="true">
@@ -752,7 +773,7 @@ font-size: 17px;
     padding-left: 44px;" class="col-4 text-left">
                                         <i class="w-icon-compare mr-2"></i>
 
-                                                            @include('home.sections.wishlist')
+                                        @include('home.sections.wishlist')
 
 
                                     </div>
@@ -797,6 +818,8 @@ font-size: 17px;
 
                                         {{--                            //colors--}}
                                         @if(count($product_colors)>0)
+                                            <span class="font-weight-bold">رنگ:</span>
+                                            <span class="color_name"></span>
                                             <div id="getAllProductColors"
                                                  class="flex-wrap {{ $product_colors[0]->Color->id==346 ? 'd-none' : 'd-flex' }}"
                                                  style="margin: 10px 0 !important;">
@@ -811,7 +834,7 @@ font-size: 17px;
                                          id="product_color_{{ $product_color->Color->id }}"
                                          value="{{ $product_color->Color->id }}"
                                      >
-                                         <input value="{{ $product_color->Color->name }}" type="hidden" id="color_name_{{$key}}">
+                                         <input value="{{ $product_color->Color->name }}" type="hidden" id="color_name_{{ $product_color->Color->id }}">
 
                                     </span>
                                                     </label>
@@ -819,31 +842,31 @@ font-size: 17px;
                                             </div>
                                         @endif
 
-                                    <div  class="row">
-                                        @if(count($product_options)>0)
-                                            <div class="mb-5 col-xl-6">
-                                                @foreach($product_options_attributes as $product_options_attribute)
-                                                    <div class="d-flex">
-                                                        <div class="control-label mb-3"
-                                                             style="margin-top: 20px;padding-top: 20px; font-size: 15px; font-weight: bold;">{{ \App\Models\Attribute::where('id',$product_options_attribute)->first()->name }}
-                                                            :
-                                                        </div>
-                                                        <ul style="margin-top: 2.1rem" class="  ">
-                                                                <?php
-                                                                $i = 0;
-                                                                ?>
-                                                            @foreach($product_options as $key=>$product_option)
-                                                                @if($product_options_attribute==$product_option->attribute_id)
-                                                                        <?php
-                                                                        $i++;
-                                                                        $attribute = \App\Models\Attribute::where('id', $product_options_attribute)->first()->limit_select;
-                                                                        if ($attribute == 1) {
-                                                                            $class = 'option_variation_radio';
-                                                                        } else {
-                                                                            $class = 'option_variation_checkbox';
-                                                                        }
-                                                                        ?>
-                                                                    <span class="variationItem mb-2 {{ $class }}">
+                                        <div  class="row">
+                                            @if(count($product_options)>0)
+                                                <div class="mb-5 col-xl-6">
+                                                    @foreach($product_options_attributes as $product_options_attribute)
+                                                        <div class="d-flex">
+                                                            <div class="control-label mb-3"
+                                                                 style="margin-top: 20px;padding-top: 20px; font-size: 15px; font-weight: bold;">{{ \App\Models\Attribute::where('id',$product_options_attribute)->first()->name }}
+                                                                :
+                                                            </div>
+                                                            <ul style="margin-top: 2.1rem" class="  ">
+                                                                    <?php
+                                                                    $i = 0;
+                                                                    ?>
+                                                                @foreach($product_options as $key=>$product_option)
+                                                                    @if($product_options_attribute==$product_option->attribute_id)
+                                                                            <?php
+                                                                            $i++;
+                                                                            $attribute = \App\Models\Attribute::where('id', $product_options_attribute)->first()->limit_select;
+                                                                            if ($attribute == 1) {
+                                                                                $class = 'option_variation_radio';
+                                                                            } else {
+                                                                                $class = 'option_variation_checkbox';
+                                                                            }
+                                                                            ?>
+                                                                        <span class="variationItem mb-2 {{ $class }}">
                                                                 <input
                                                                     onclick="extraPrice({{ $product_options_attribute }},this,{{ $attribute }})"
                                                                     data-id="extra_option"
@@ -861,18 +884,18 @@ font-size: 17px;
                                                                     style="display: flex;align-items:center;justify-content: center;width: 100%;height: 100%;"
                                                                     for="attr_{{ $product_option->id }}">{{ $product_option->VariationValue->name }}</label>
                                                        </span>
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
 
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            <div style="{{count($product_options)>0 ? ' ' : 'margin-right:auto;margin-left:auto;'}}"  id="price_info col-xl-6">
+                                                @include('home.sections.price_box')
                                             </div>
-                                        @endif
-                                        <div style="{{count($product_options)>0 ? ' ' : 'margin-right:auto;margin-left:auto;'}}"  id="price_info col-xl-6">
-                                            @include('home.sections.price_box')
                                         </div>
-                                    </div>
                                         @if(count($product_attr_variations_categories)>1 and count($product_colors)>1)
                                             <div class="d-flex flex-wrap" style="margin: 10px 0 !important;">
                                                 <button class="btn btn-primary btn-filter-clear">
@@ -897,6 +920,24 @@ font-size: 17px;
                     </article>
                 </div>
             </div>
+            @if(count($related_products)>0)
+                <div class="row">
+                    <div class="col-12">
+                        <div class="widget widget-product card border_all bglight">
+                            <header>
+                                <p class="best_sale_title text-center font-weight-bold">
+                                    RELATED PRODUCT کالاهای مرتبط
+                                </p>
+                            </header>
+                            <div class="newest-product-carousel owl-carousel owl-theme">
+                                @foreach($related_products as $product)
+                                    @include('home.sections.product_box')
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="container">
                 <div class="row">
                     <div class="col-12 default no-padding bg_single_product">
@@ -904,25 +945,25 @@ font-size: 17px;
                             <div class="box-tabs default">
                                 <ul class="nav" role="tablist">
                                     <li class="box-tabs-tab">
-                                        <a class="active " data-toggle="tab" href="#desc" role="tab"
+                                        <a class="active font-weight-bold " data-toggle="tab" href="#desc" role="tab"
                                            aria-expanded="true">
-                                            توضیحات تکمیلی
+                                            مشخصات کالا
                                         </a>
                                     </li>
                                     <li class="box-tabs-tab">
-                                        <a data-toggle="tab" href="#params" role="tab" aria-expanded="false">
-                                            مشخصات محصول
+                                        <a class="font-weight-bold" data-toggle="tab" href="#params" role="tab" aria-expanded="false">
+                                            معرفی تخصصی
                                         </a>
                                     </li>
                                     <li class="box-tabs-tab">
-                                        <a data-toggle="tab" href="#comments" role="tab" aria-expanded="false">
-                                            دیدگاه خریداران
+                                        <a class="font-weight-bold" data-toggle="tab" href="#comments" role="tab" aria-expanded="false">
+                                           دیدگاه ها
                                         </a>
                                     </li>
                                     <li class="box-tabs-tab">
-                                        <a data-toggle="tab" href="#comments_questions" role="tab"
+                                        <a class="font-weight-bold" data-toggle="tab" href="#comments_questions" role="tab"
                                            aria-expanded="false">
-                                            پرسش و نظر
+                                            پرسش و پاسخ
                                         </a>
                                     </li>
                                 </ul>

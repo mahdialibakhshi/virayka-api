@@ -96,6 +96,8 @@ class ProductController extends Controller
             }
             $product['category_name'] = $category_name;
         }
+
+
         return view('home.product', compact('product',
             'AllProductImages',
             'product_attributes',
