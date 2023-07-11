@@ -13,36 +13,53 @@
 @endsection
 
 @section('style')
-<style>
-    @media screen and (max-width:867px){
-    #offercarousel > .row {
-        height:606px !important;
-    }
-    #offercarousel{
-        height:656px !important;
-    }
-    .timer-title{
-        margin-top:25px !important;
-    }
-    div.price{
-         margin-top:25px !important;
-    }
-    .imgboxofer > a > img{
-        margin-bottom:40px;
-    }
-    
-}
+    <style>
+        @media screen and (max-width:867px){
+            #offercarousel > .row {
+                height:606px !important;
+            }
+            #offercarousel{
+                height:656px !important;
+            }
+            .timer-title{
+                margin-top:25px !important;
+            }
+            div.price{
+                margin-top:25px !important;
+            }
+            .imgboxofer > a > img{
+                margin-bottom:40px;
+            }
 
-@media screen and (max-width:420px){
-    #offercarousel .countdown-timer{
-        display:flex !important;
-        justify-content: space-around !important;
-    }
-}
-.active > .yellow-p{
-    color:yellow !important;
-}
-</style>
+
+        }
+        .owl-dots .active{
+            background-color:var(--yellow);
+
+        }
+        .owl-dots .owl-dot:hover{
+            background-color:red !important;
+        }
+        .brand-widget  .owl-next{
+            left:-38px;
+        }
+
+        .brand-widget  .owl-prev{
+            right:38px;
+        }
+        .brand-widget  .owl-next,.brand-widget  .owl-prev{
+            top:50% !important;
+        }
+        @media screen and (max-width:420px){
+            #offercarousel .countdown-timer{
+                display:flex !important;
+                justify-content: space-around !important;
+            }
+        }
+        .active > .yellow-p{
+            color:yellow !important;
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -76,7 +93,7 @@
             @if(count($brands)>0)
                 <div class="row">
                     <div class="col-12">
-                        <div class="widget widget-product card border_all">
+                        <div class="widget widget-product brand-widget card border_all">
                             <div class="product-carousel owl-carousel owl-theme text-center">
                                 @foreach($brands as $brand)
                                     <div class="item borderitem">
@@ -210,7 +227,7 @@
                         </section>
                     </div>
                 @endif
-                    <div class="col-12 col-lg-3">
+                <div class="col-12 col-lg-3">
                     <div class="widget-bid-s widget">
                         <div id="bid-s" class="owl-carousel owl-theme">
                             @foreach($products_has_sale as $product)
@@ -404,42 +421,42 @@ items: 4,
                     </div>
                 </div>
             </div>
-                @if(count($products_hit)>0)
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="widget widget-product card border_all bglight">
-                                <header>
-                                    <p class="best_sale_title text-center">
-                                        BEST SELLER پرفروش ترین ها
-                                    </p>
-                                </header>
-                                <div class="newest-product-carousel owl-carousel owl-theme">
-                                    @foreach($products_hit as $product)
-                                        @include('home.sections.product_box')
-                                    @endforeach
-                                </div>
+            @if(count($products_hit)>0)
+                <div class="row">
+                    <div class="col-12">
+                        <div class="widget widget-product card border_all bglight">
+                            <header>
+                                <p class="best_sale_title text-center">
+                                    BEST SELLER پرفروش ترین ها
+                                </p>
+                            </header>
+                            <div class="newest-product-carousel owl-carousel owl-theme">
+                                @foreach($products_hit as $product)
+                                    @include('home.sections.product_box')
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                @endif
-                @if(count($products_new)>0)
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="widget widget-product card border_all bglight">
-                                <header>
-                                    <p class="newest_sale_title text-center">
-                                        NEWEST جدیدترین ها
-                                    </p>
-                                </header>
-                                <div class="newest-product-carousel owl-carousel owl-theme">
-                                    @foreach($products_new as $product)
-                                        @include('home.sections.product_box')
-                                    @endforeach
-                                </div>
+                </div>
+            @endif
+            @if(count($products_new)>0)
+                <div class="row">
+                    <div class="col-12">
+                        <div class="widget widget-product card border_all bglight">
+                            <header>
+                                <p class="newest_sale_title text-center">
+                                    NEWEST جدیدترین ها
+                                </p>
+                            </header>
+                            <div class="newest-product-carousel owl-carousel owl-theme">
+                                @foreach($products_new as $product)
+                                    @include('home.sections.product_box')
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
+            @endif
         </div>
 
 

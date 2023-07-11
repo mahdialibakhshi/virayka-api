@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Api\SpeedApi;
 use App\Http\Controllers\Controller;
 use App\Models\AnimationBanner;
 use App\Models\Article;
@@ -49,8 +50,12 @@ use Illuminate\Support\Facades\File;
 
 class IndexHomeController extends Controller
 {
-public function index()
+    public function index()
     {
+//        $api = new SpeedApi();
+//
+//        $products = $api->SpeedGet('/Serv/Speed/GetItem','get',null);
+//        dd($products);
         visitor()->visit();
         $sliders = Slider::where('is_active', 1)->orderby('priority', 'asc')->get();
         $banners = Banner::all();
@@ -88,8 +93,8 @@ public function index()
             ->orderby('updated_at')
             ->get();
         $products_hit = Product::where('quantity', '>', 0)
-            ->where('hit','>',0)
-            ->orderby('hit','asc')
+            ->where('hit', '>', 0)
+            ->orderby('hit', 'asc')
             ->take(10)
             ->get();
         $animation_banner = AnimationBanner::first();
