@@ -18,7 +18,7 @@ class SpeedApi
     {
         $this->client = new Client();
         $this->url = 'http://93.118.112.245:8081';
-        $this->authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Ilx1MDY0OFx1MDYyOCBcdTA2MzNcdTA2MzFcdTA2NDhcdTA2Y2NcdTA2MzMiLCJVc2VySUQiOiI1IiwibmJmIjoxNjg4ODkxOTQ2LCJleHAiOjE2ODg5NzgzNDYsImlhdCI6MTY4ODg5MTk0NiwiaXNzIjoiU1JWLUZTIiwiYXVkIjoiU1JWLUZTIiwiY21wbmEiOiJhUnBhX20xMDE6MDk6MDYifQ.ZvNAj-pLZsuu0JwJYaeTGTr976UitWjTlIBigQICEIQ';
+        $this->authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Ilx1MDY0OFx1MDYyOCBcdTA2MzNcdTA2MzFcdTA2NDhcdTA2Y2NcdTA2MzMiLCJVc2VySUQiOiI1IiwibmJmIjoxNjg5MTQ4NzYyLCJleHAiOjE2ODkyMzUxNjIsImlhdCI6MTY4OTE0ODc2MiwiaXNzIjoiU1JWLUZTIiwiYXVkIjoiU1JWLUZTIiwiY21wbmEiOiJhUnBhX20xMTI6Mjk6MjIifQ.eARLbE-5B7HYiJ8BwkbpOdUuHFUSTnu1bRN21AXEt2Y';
 
 
     }

@@ -54,6 +54,7 @@ class IndexHomeController extends Controller
     {
         $api = new SpeedApi();
 
+
         $products = $api->SpeedGet('/Serv/Speed/GetItem','get',null);
 
         visitor()->visit();
