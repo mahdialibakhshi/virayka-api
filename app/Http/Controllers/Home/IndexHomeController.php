@@ -52,10 +52,10 @@ class IndexHomeController extends Controller
 {
     public function index()
     {
-//        $api = new SpeedApi();
-//
-//        $products = $api->SpeedGet('/Serv/Speed/GetItem','get',null);
-//        dd($products);
+        $api = new SpeedApi();
+
+        $products = $api->SpeedGet('/Serv/Speed/GetItem','get',null);
+
         visitor()->visit();
         $sliders = Slider::where('is_active', 1)->orderby('priority', 'asc')->get();
         $banners = Banner::all();
