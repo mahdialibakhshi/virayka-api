@@ -57,6 +57,7 @@ class IndexHomeController extends Controller
 
         $products = $api->SpeedGet('/Serv/Speed/GetItem','get',null);
 
+
         visitor()->visit();
         $sliders = Slider::where('is_active', 1)->orderby('priority', 'asc')->get();
         $banners = Banner::all();

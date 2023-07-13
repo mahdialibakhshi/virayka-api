@@ -12,26 +12,55 @@ class SpeedApi
     public $url;
 
     public $client;
+    public $username;
+    public $password;
     public $authorization;
+
 
     public function __construct()
     {
         $this->client = new Client();
+        $this->username = 'وب سرویس';
+        $this->password = '159753';
         $this->url = 'http://93.118.112.245:8081';
-        $this->authorization = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Ilx1MDY0OFx1MDYyOCBcdTA2MzNcdTA2MzFcdTA2NDhcdTA2Y2NcdTA2MzMiLCJVc2VySUQiOiI1IiwibmJmIjoxNjg5MTQ4NzYyLCJleHAiOjE2ODkyMzUxNjIsImlhdCI6MTY4OTE0ODc2MiwiaXNzIjoiU1JWLUZTIiwiYXVkIjoiU1JWLUZTIiwiY21wbmEiOiJhUnBhX20xMTI6Mjk6MjIifQ.eARLbE-5B7HYiJ8BwkbpOdUuHFUSTnu1bRN21AXEt2Y';
 
+        $this->authorization = 'Bearer '.$this->GetToken();
+
+
+    }
+
+
+    public function GetToken()
+    {
+
+
+
+        $response = $this->client->request('POST',$this->url .'/Serv/token/GetServiceToken?username=وب سرویس&password=159753' ,[
+
+            "headers" => [
+                'Content-Type' => 'application/json',
+
+            ],
+            "http_errors" => false,
+        ]);
+
+
+        return preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response->getBody()->getContents()) ;
 
     }
 
     public  function SpeedGet($suburl,$method,$data)
     {
+        $token = $this->authorization;
+
+
 
 
         if ($data == null){
             $response = $this->client->request($method,$this->url . $suburl,[
                 "headers" => [
                     'Content-Type' => 'application/json',
-                    'Authorization' => $this->authorization
+                    'Authorization' => $token
                 ],
                 "http_errors" => false,
             ]);
@@ -53,8 +82,8 @@ class SpeedApi
 
 
 
-        $result = json_decode($response->getBody()->getContents(), true);
-        dd(str_replace('"','`',$response->getBody()->getContents()));
+        $result = json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response->getBody()->getContents()), true );
+dd($result);
 
 
         if ($result['error'] != null){

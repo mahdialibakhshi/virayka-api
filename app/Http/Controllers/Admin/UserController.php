@@ -19,10 +19,10 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
     //return Users Ajax
     public function AjaxGet()
     {
+
         $users = User::where('role', '!=', 1)->get();
         return response()->json($users);
     }

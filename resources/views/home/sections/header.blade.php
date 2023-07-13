@@ -141,6 +141,7 @@ $brands = \App\Models\Brand::all()
                     </li>
                 </ul>
             </div>
+          
         </nav>
     </div>
 
